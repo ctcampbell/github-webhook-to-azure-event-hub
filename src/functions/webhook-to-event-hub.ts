@@ -3,7 +3,7 @@ import { createProbot, createAzureFunctionV4 } from "@probot/adapter-azure-funct
 
 import probotapp from "./app";
 
-app.http('azureprobot', {
+app.http('webhook-to-event-hub', {
   methods: ['POST'],
   authLevel: 'anonymous',
   handler: createAzureFunctionV4(probotapp, {

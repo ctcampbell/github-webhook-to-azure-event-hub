@@ -1,5 +1,6 @@
 import { Probot } from "probot"
 import crypto from "crypto"
+import { EmitterWebhookEvent } from "@octokit/webhooks"
 
 // code_scanning_alert
 let csaEventHubUri = process.env["csaEventHubUri"]
@@ -37,7 +38,7 @@ export = (app: Probot) => {
 
 }
 
-async function sendMessage(context: any, eventHubUri: string, saName: string, saKey: string) {
+async function sendMessage(context: EmitterWebhookEvent, eventHubUri: string, saName: string, saKey: string) {
   let sasToken = createSharedAccessToken(eventHubUri, saName, saKey)
   let response = await fetch(eventHubUri, {
     method: "POST",

@@ -22,6 +22,7 @@ This Azure Function accepts webhook events sent by GitHub, constructs an `Author
     "APP_ID": "<your-github-app-id>",
     "WEBHOOK_SECRET": "<your-webhook-secret>",
     "PRIVATE_KEY": "<your-github-app-private-key>",
+    "WEBHOOK_PATH": "/api/github/webhooks",
     "csaSaName": "<code-scanning-azure-event-hub-instance-shared-access-policy-name>",
     "csaSaKey": "<code-scanning-azure-event-hub-instance-shared-access-policy-key>",
     "csaEventHubUri": "https://<azure-event-hub-namespace>.servicebus.windows.net/code-scanning-event-hub-instance-name/messages",

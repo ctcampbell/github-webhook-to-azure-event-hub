@@ -2,6 +2,7 @@ import { Probot } from "probot"
 import crypto from "crypto"
 import { EmitterWebhookEvent } from "@octokit/webhooks"
 
+
 // code_scanning_alert
 let csaEventHubUri = process.env["csaEventHubUri"]
 let csaSaName = process.env["csaSaName"]
@@ -17,7 +18,13 @@ let daEventHubUri = process.env["daEventHubUri"]
 let daSaName = process.env["daSaName"]
 let daSaKey = process.env["daSaKey"]
 
-export = (app: Probot) => {
+export default function (app: Probot) {
+  app.onAny((context) => {
+    app.log.debug(context.id)
+    app.log.debug(context.name)
+    app.log.debug(context.payload)
+  })
+
   app.on("code_scanning_alert", async (context) => {
     if (csaEventHubUri && csaSaName && csaSaKey) {
       sendMessage(context, csaEventHubUri, csaSaName, csaSaKey)
@@ -35,7 +42,6 @@ export = (app: Probot) => {
       sendMessage(context, daEventHubUri, daSaName, daSaKey)
     }
   })
-
 }
 
 async function sendMessage(context: EmitterWebhookEvent, eventHubUri: string, saName: string, saKey: string) {

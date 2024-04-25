@@ -4,6 +4,9 @@ An Azure function that recieves GitHub Webhooks and sends them to Azure Event Hu
 
 Events sent to an Event Hub instance can be ingested by tools such as Azure Data Explorer for reporting purposes.
 
+<img width="600" alt="image" src="https://github.com/ctcampbell/github-webhook-to-azure-event-hub/assets/808531/9958c1f9-1193-438d-bd44-49af9e028efa">
+
+
 ## Requirements
 
 1. An Azure Event Hub namespace with 3 event hub instances, one for each webhook event type listed above.
